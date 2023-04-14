@@ -41,8 +41,8 @@ export class Song {
     else {
       // NOTE: this is a workaround for Spotify links
       const spotifyData = isSpotifySongUrl ? await getData(url) : null;
-      const search_term = spotifyData != null ? `${spotifyData.name} ${spotifyData.artist}` : search;
-      const result = await youtube.searchOne(search_term)
+      const search_term = spotifyData != null ? `${spotifyData.name} ${spotifyData.artists[0].name }` : search;
+      const result = await youtube.searchOne(search_term);
 
       result ? null : console.log(`No results found for ${search}`); // This is for handling the case where no results are found (spotify links for example)
 
